@@ -1,11 +1,18 @@
 import { createSignal } from "solid-js";
 import { A } from "@solidjs/router";
+import { useCartContext } from "./context/CartContext";
 
 const App = (props) => {
   const [darkTheme, setDarkTheme] = createSignal(false);
   function toggleTheme() {
     setDarkTheme(!darkTheme());
   }
+  const { items } = useCartContext();
+  const quantity = () => {
+    return items.reduce((acc, current) => {
+      return acc + current.quantity;
+    }, 0);
+  };
 
   return (
     <>
@@ -26,7 +33,7 @@ const App = (props) => {
           <h1>Merch Shop</h1>
 
           <A href="/">Home</A>
-          <A href="/cart">Cart</A>
+          <A href="/cart">Cart ({quantity})</A>
         </header>
 
         {props.children}

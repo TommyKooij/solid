@@ -3,14 +3,13 @@ import { render } from "solid-js/web";
 import { Route, Router } from "@solidjs/router";
 
 import "./index.css";
-import { lazy } from "solid-js";
 import App from "./App";
+import Home from "./pages/Home";
+import Cart from "./pages/Cart";
 import Product from "./pages/Product";
 import { CartContextProvider } from "./context/CartContext";
 
 const root = document.getElementById("root");
-const Home = lazy(() => import("./pages/Home"));
-const Cart = lazy(() => import("./pages/Cart"));
 
 if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
   throw new Error(

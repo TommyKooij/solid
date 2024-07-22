@@ -4,10 +4,7 @@ import { createStore } from "solid-js/store";
 export const CartContext = createContext();
 
 export function CartContextProvider(props) {
-  const [items, setItems] = createStore([
-    { title: "Test", quantity: 2, id: 100, price: 15 },
-    { title: "Test 2", quantity: 3, id: 101, price: 10 },
-  ]);
+  const [items, setItems] = createStore([]);
 
   return (
     <CartContext.Provider value={{ items, setItems }}>
