@@ -26,7 +26,7 @@ const App = (props) => {
           <h1>Merch Shop</h1>
 
           <A href="/">Home</A>
-          <A href="/Cart">Cart</A>
+          <A href="/cart">Cart</A>
         </header>
 
         {props.children}

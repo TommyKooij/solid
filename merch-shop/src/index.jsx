@@ -5,6 +5,8 @@ import { Route, Router } from "@solidjs/router";
 import "./index.css";
 import { lazy } from "solid-js";
 import App from "./App";
+import Product from "./pages/Product";
+import { CartContextProvider } from "./context/CartContext";
 
 const root = document.getElementById("root");
 const Home = lazy(() => import("./pages/Home"));
@@ -18,10 +20,13 @@ if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
 
 render(
   () => (
-    <Router root={App}>
-      <Route path="/" component={Home} />
-      <Route path="/cart" component={Cart} />
-    </Router>
+    <CartContextProvider>
+      <Router root={App}>
+        <Route path="/" component={Home} />
+        <Route path="/cart" component={Cart} />
+        <Route path="/product/:id" component={Product} />
+      </Router>
+    </CartContextProvider>
   ),
   root
 );
